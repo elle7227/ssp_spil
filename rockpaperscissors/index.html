@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rock, Paper, Scissors</title>
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Rock, Paper, Scissors</h1>
+
+  <div id="gamefield">
+    <div id="player1" class="player"></div>
+    <div id="player2" class="player"></div>
+    <div id="player1_rock" class="player_rock"></div>
+    <div id="texts">
+      <div id="lose" class="hidden"><h1>
+        You lose
+      </h1></div>
+      <div id="win" class="hidden"><h1>
+        You win
+      </h1></div>
+      <div id="draw" class="hidden"><h1>
+        It's a draw
+      </h1></div>
+
+      
+      <button id="play_again" class="hidden">play Again</button>
+    </div>
+  </div>
+  <button id="play">play</button>
+
+  <div id="buttons">
+    <button class="rock"></button>
+    <button class="paper"></button>
+    <button class="scissors"></button>
+  </div>
+
+</body>
+</html>
+
+<script>
+
+window.addEventListener("load", start);
+let userChoice;
+let comChoice;
+function start(){
+  document.querySelector(".rock").classList.add("hidden");
+  document.querySelector(".paper").classList.add("hidden");
+  document.querySelector(".scissors").classList.add("hidden");
+document.querySelector("#play").addEventListener("click",startGame);
+randomCompChoice()
+}
+function randomCompChoice(){
+  comChoice = "p"
+
+}
+function startGame (){
+  document.querySelector("#play").classList.add("hidden");
+  document.querySelector(".rock").classList.remove("hidden");
+  document.querySelector(".paper").classList.remove("hidden");
+  document.querySelector(".scissors").classList.remove("hidden");
+
+  document.querySelector(".rock").addEventListener("click",playGameRock);
+  document.querySelector(".paper").addEventListener("click",playGamePaper);
+  document.querySelector(".scissors").addEventListener("click",playGameScissor);
+}
+
+function playGameRock(){
+  document.querySelector(".rock").classList.add("hidden");
+  document.querySelector(".paper").classList.add("hidden");
+  document.querySelector(".scissors").classList.add("hidden");
+  
+  document.querySelector("#player1").classList.add("shake");
+  document.querySelector("#player2").classList.add("shake");
+   document.querySelector("#player1").addEventListener("animationend", showMoveR);
+ 
+  userChoice ="r";
+
+}
+
+function playGamePaper(){
+  document.querySelector(".rock").classList.add("hidden");
+  document.querySelector(".paper").classList.add("hidden");
+  document.querySelector(".scissors").classList.add("hidden");
+  
+  document.querySelector("#player1").classList.add("shake");
+  document.querySelector("#player2").classList.add("shake");
+  document.querySelector("#player1").addEventListener("animationend", showMoveP);
+ 
+  userChoice ="p";
+}
+
+function playGameScissor(){
+  document.querySelector(".rock").classList.add("hidden");
+  document.querySelector(".paper").classList.add("hidden");
+  document.querySelector(".scissors").classList.add("hidden");
+  
+  document.querySelector("#player1").classList.add("shake");
+  document.querySelector("#player2").classList.add("shake");
+  document.querySelector("#player1").addEventListener("animationend", showMoveS);
+  
+  userChoice ="s";
+}
+
+function showMoveR(){
+  console.log("showing final move = rock")
+  document.querySelector("#player1").classList.remove("player");
+  document.querySelector("#player1").classList.add("rock");
+
+  document.querySelector("#player2").classList.remove("player");
+  document.querySelector("#player2").classList.add("paper");
+  gameOver();
+
+}
+
+function showMoveP(){
+  console.log("showing final move = paper")
+  document.querySelector("#player1").classList.remove("player");
+  document.querySelector("#player1").classList.add("paper");
+
+  document.querySelector("#player2").classList.remove("player");
+  document.querySelector("#player2").classList.add("paper");
+  gameOver();
+}
+
+function showMoveS(){
+  console.log("showing final move = scissor");
+  document.querySelector("#player1").classList.remove("player");
+  document.querySelector("#player1").classList.add("scissors");
+
+  document.querySelector("#player2").classList.remove("player");
+  document.querySelector("#player2").classList.add("paper");
+  gameOver();
+}
+
+
+function gameOver(){
+  console.log("game over "+ userChoice + " comp choice "+ comChoice);
+let result ;
+  if (comChoice === userChoice){
+    result = "draw"
+
+  }else{
+      if  (comChoice ==="r"){
+          if (userChoice ==="s"){
+              result = "comp wins"
+            }
+             if (userChoice ==="p"){
+              result = "user wins"
+
+
+            }
+      }else if (comChoice ==="s")
+        if (userChoice ==="r"){
+              result = "user wins"
+            }
+             if (userChoice ==="p"){
+              result = "comp wins"
+
+
+      } else if (comChoice ==="p")
+        if (userChoice ==="r"){
+              result = "comp wins"
+            }
+             if (userChoice ==="s"){
+              result = "user wins"
+            }
+
+  }
+  console.log("RESULT",result)
+
+  if (result === "user wins"){
+    youWin();
+  }
+  else if (result ==="comp wins"){
+              youLoose();
+            }
+}
+
+function youWin(){
+  document.querySelector("#play").classList.remove("hidden");
+}
+
+function youLoose(){
+  document.querySelector("#play").classList.remove("hidden");
+  document.querySelector("#player1").classList.add("paper");
+
+}
+
+
+
+
+
+
+</script>
