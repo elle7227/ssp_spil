@@ -30,7 +30,7 @@
       <button id="play_again" class="hidden">play Again</button>
     </div>
   </div>
-  <button id="play">play</button>
+
 
   <div id="buttons">
     <button class="rock"></button>
@@ -46,27 +46,20 @@
 window.addEventListener("load", start);
 let userChoice;
 let comChoice;
+
+
+
 function start(){
-  document.querySelector(".rock").classList.add("hidden");
-  document.querySelector(".paper").classList.add("hidden");
-  document.querySelector(".scissors").classList.add("hidden");
-document.querySelector("#play").addEventListener("click",startGame);
-randomCompChoice()
-}
-function randomCompChoice(){
-  comChoice = "p"
-
-}
-function startGame (){
-  document.querySelector("#play").classList.add("hidden");
-  document.querySelector(".rock").classList.remove("hidden");
-  document.querySelector(".paper").classList.remove("hidden");
-  document.querySelector(".scissors").classList.remove("hidden");
-
   document.querySelector(".rock").addEventListener("click",playGameRock);
   document.querySelector(".paper").addEventListener("click",playGamePaper);
   document.querySelector(".scissors").addEventListener("click",playGameScissor);
+randomCompChoice()
 }
+
+function randomCompChoice(){
+  comChoice = "p"
+}
+
 
 function playGameRock(){
   document.querySelector(".rock").classList.add("hidden");
@@ -178,19 +171,31 @@ let result ;
   else if (result ==="comp wins"){
               youLoose();
             }
+  else if (result ==="draw"){
+              draw();
+            }
 }
 
 function youWin(){
-  document.querySelector("#play").classList.remove("hidden");
+  document.querySelector("#win").classList.remove("hidden");
+  document.querySelector("#play_again").classList.remove("hidden");
+  document.querySelector("#play_again").addEventListener("click",start);
+  start();
 }
 
 function youLoose(){
-  document.querySelector("#play").classList.remove("hidden");
-  document.querySelector("#player1").classList.add("paper");
-
+  document.querySelector("#lose").classList.remove("hidden");
+  document.querySelector("#play_again").classList.remove("hidden");
+  document.querySelector("#play_again").addEventListener("click",start); 
+start();
 }
 
-
+function draw(){
+  document.querySelector("#draw").classList.remove("hidden");
+  document.querySelector("#play_again").classList.remove("hidden");
+  document.querySelector("#play_again").addEventListener("click",start);
+  start();
+}
 
 
 

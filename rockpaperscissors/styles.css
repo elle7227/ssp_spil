@@ -7,7 +7,7 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 8vw;
+  font-size: 7vw;
 }
 
 #gamefield {
@@ -31,6 +31,7 @@ h1 {
   height: 40vw;
   background-size: 100%;
   background-image: url(hand_rock.png);
+  margin-top: -20px;
 }
 
 .rock {
@@ -116,6 +117,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   max-width: 50vw;
+  margin-top: -60px;
 }
 
 #buttons.disabled button {
@@ -153,3 +155,10 @@ button{
   cursor: pointer;
 }
 
+
+#play_again{
+  scale: 500%;
+position: absolute;
+left:45% ;
+top: -50px;
+}
